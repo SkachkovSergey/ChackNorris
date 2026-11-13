@@ -39,11 +39,11 @@ namespace ChackNorris.Application.Services
         }
         public async Task AddReviewAsync(Review review) => 
             await _reviewRepository.CreateAsync(review);
-        
-        //public async Task<Review> GetReviewByIdAsync(Review review) => 
-        //    await _reviewRepository.GetByIdAsync(review);
-        
-        
-        
+
+        public async Task<double?> GetAvarageScoreAsync(int id) =>
+            await _reviewRepository.GetAvarageAsync(id);
+
+
+
     }
 }

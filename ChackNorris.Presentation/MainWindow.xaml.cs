@@ -164,13 +164,18 @@ namespace ChackNorris.Presentation
             await RefreshListBox();
         }
 
-        private void jokesListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private async void jokesListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             if (jokesListBox.SelectedItem is not Joke selectedJoke)
             {
                 MessageBox.Show("Selecteer eerst je favorite joke!");
             }
-
+            else
+            {
+                double? avg = await _jokeService.GetAvarageScoreAsync(selectedJoke.Id);
+               
+                DisplayAverageScore(avg ?? 0);              
+            }           
         }
     }
 }

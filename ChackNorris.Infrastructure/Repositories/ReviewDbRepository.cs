@@ -26,6 +26,21 @@ namespace ChackNorris.Infrastructure.Repositories
                 review.Id = await connection.ExecuteScalarAsync<int>(sql, review);
             }
         }
+
+        public async Task<double?> GetAvarageAsync(int jokeId)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string sql = """
+                    SELECT AVG(Score) 
+                    FROM Reviews
+                    WHERE JokeId = @JokeId;
+                    """;
+
+                return await connection.ExecuteScalarAsync<float>(sql, new { JokeId = jokeId });
+            }
+        }
+
         //public async Task<IEnumerable<Review>>GetByIdAsync(Review review)
         //{
         //    using(SqlConnection connection = new SqlConnection(_connectionString))
