@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ChackNorris.Application/ChackNorris.Application.csproj" />
+  <Project Path="ChackNorris.Domain/ChackNorris.Domain.csproj" />
+  <Project Path="ChackNorris.Infrastructure/ChackNorris.Infrastructure.csproj" />
+  <Project Path="ChackNorris.Presentation/ChackNorris.Presentation.csproj" />
+</Solution>

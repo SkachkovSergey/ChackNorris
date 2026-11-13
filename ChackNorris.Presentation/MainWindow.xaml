@@ -1,0 +1,125 @@
+﻿<Window x:Class="ChackNorris.Presentation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChackNorris.Presentation"
+        mc:Ignorable="d"
+        Title="Chuck Norris Tribute" Height="600" Width="900" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Top Section: Joke Display and Buttons -->
+        <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                BorderBrush="DarkGray" BorderThickness="1"
+                Padding="10" Margin="10" Header="🤣🤣🤣🤣">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="jokeTextBlock"
+                           Text="Click 'Refresh' to get a random Chuck Norris joke!"
+                           FontSize="16"
+                           TextWrapping="Wrap"
+                           Padding="10"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <Button x:Name="refreshButton"
+                        Grid.Column="1"
+                        Content="🔄"
+                        Padding="10"
+                        Margin="5"
+                        FontSize="24"
+                        HorizontalAlignment="Right" Click="refreshButton_Click"/>
+                <Button x:Name="saveButton"
+                        Grid.Column="2"
+                        Content="💾"
+                        Padding="10"
+                        Margin="5"
+                        IsEnabled="False"
+                        FontSize="24" Click="saveButton_Click"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- Left Section: Jokes List -->
+        <GroupBox Header="Collectie"
+                    Grid.Row="1" Grid.Column="0"
+                    Margin="10" Padding="10">
+            <ListBox x:Name="jokesListBox" SelectionChanged="jokesListBox_SelectionChanged_1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Content}"
+                            TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+
+        <!-- Right Section: Joke Details and Review -->
+        <GroupBox Header="Details"
+                  Grid.Row="1" Grid.Column="1"
+                  Margin="10" Padding="10">
+            <StackPanel>
+                <TextBlock Grid.Row="0"
+                       x:Name="selectedJokeTextBlock"
+                       Text="Select a joke to view details"
+                       FontSize="14"
+                       TextWrapping="Wrap"
+                       Padding="10"
+                       MinHeight="60"
+                       Margin="0,0,0,10"/>
+
+                <TextBlock Text="Gemiddelde score:"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Padding="10,5"/>
+
+                <StackPanel x:Name="averageScorePanel" Margin="10,0,10,5"
+                            Orientation="Horizontal">
+                    <TextBlock Text="☆" Width="40" Height="40" TextAlignment="Center" FontSize="24" Foreground="Gold" Margin="2"/>
+                    <TextBlock Text="☆" Width="40" Height="40" TextAlignment="Center" FontSize="24" Foreground="Gold" Margin="2"/>
+                    <TextBlock Text="☆" Width="40" Height="40" TextAlignment="Center" FontSize="24" Foreground="Gold" Margin="2"/>
+                    <TextBlock Text="☆" Width="40" Height="40" TextAlignment="Center" FontSize="24" Foreground="Gold" Margin="2"/>
+                    <TextBlock Text="☆" Width="40" Height="40" TextAlignment="Center" FontSize="24" Foreground="Gold" Margin="2"/>
+                </StackPanel>
+
+                <TextBlock Text="Beoordeling toevoegen:"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           Padding="10,5"/>
+
+                <StackPanel x:Name="reviewStarsPanel"
+                            Orientation="Horizontal"
+                            Margin="10,0,10,5">
+                    <Button x:Name="star1Button" Content="☆" FontSize="24"
+                            Width="40" Height="40" Margin="2"  Tag="1"
+                            MouseMove="StarButton_MouseMove" Click="StarButton_Click" MouseLeave="StarButton_MouseLeave"/>
+                    <Button x:Name="star2Button" Content="☆" FontSize="24"
+                            Width="40" Height="40" Margin="2"  Tag="2"
+                            MouseMove="StarButton_MouseMove" Click="StarButton_Click" MouseLeave="StarButton_MouseLeave"/>
+                    <Button x:Name="star3Button" Content="☆" FontSize="24"
+                            Width="40" Height="40" Margin="2"  Tag="3"
+                            MouseMove="StarButton_MouseMove" Click="StarButton_Click" MouseLeave="StarButton_MouseLeave"/>
+                    <Button x:Name="star4Button" Content="☆" FontSize="24"
+                            Width="40" Height="40" Margin="2"  Tag="4"
+                            MouseMove="StarButton_MouseMove" Click="StarButton_Click" MouseLeave="StarButton_MouseLeave"/>
+                    <Button x:Name="star5Button" Content="☆" FontSize="24"
+                            Width="40" Height="40" Margin="2"  Tag="5"
+                            MouseMove="StarButton_MouseMove" Click="StarButton_Click" MouseLeave="StarButton_MouseLeave"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</Window>
